@@ -1,17 +1,17 @@
 {
   "name": "saas-rbac",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "./src/index.js",
+  "private": true,
+  "license": "MIT",
+  "author": "Marcos Parreiras",
+  "scripts": {},
   "devDependencies": {
     "@types/node": "^20.12.7",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@casl/ability": "^6.7.1"
   }
 }
