@@ -5,7 +5,9 @@
   "private": true,
   "license": "MIT",
   "author": "Marcos Parreiras",
-  "scripts": {},
+  "scripts": {
+    "dev": "tsx watch src/api/index.ts"
+  },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "tsx": "^4.7.3",
