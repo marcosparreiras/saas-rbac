@@ -1,13 +1,11 @@
 {
   "name": "saas-rbac",
   "version": "1.0.0",
-  "main": "./src/index.js",
+  "main": "index.js",
   "private": true,
   "license": "MIT",
   "author": "Marcos Parreiras",
-  "scripts": {
-    "dev": "tsx watch src/api/index.ts"
-  },
+  "scripts": {},
   "devDependencies": {
     "@types/node": "^20.12.7",
     "tsx": "^4.7.3",
