@@ -1,3 +1,5 @@
+import { Roles } from "../roles";
+
 export type User = {
-  role: "ADMIN" | "MEMBER";
+  role: Roles;
 };
