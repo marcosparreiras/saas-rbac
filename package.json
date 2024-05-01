@@ -6,9 +6,11 @@
   "license": "MIT",
   "author": "Marcos Parreiras",
   "scripts": {
-    "dev": "tsx watch ./src/http/server.ts"
+    "dev": "tsx watch ./src/http/server.ts",
+    "db:seed": "tsx ./prisma/seed.ts"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.12.7",
     "prisma": "^5.13.0",
