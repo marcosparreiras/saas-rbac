@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  saas-rbac-db:
+    image: postgres
+    container_name: saas-rbac-db
+    environment:
+      - POSTGRES_DB=saas-rbac
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - 5432:5432
