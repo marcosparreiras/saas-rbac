@@ -16,6 +16,7 @@ import { errorHandler } from "./error-handler";
 import { requestPsswordRecoverRoute } from "./routes/auth/request-password-recover";
 import { resetPasswordRoute } from "./routes/auth/reset-password";
 import { authenticateWithGithubRoute } from "./routes/auth/authenticate-with-github";
+import { env } from "@/env";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -51,7 +52,6 @@ app.register(authenticateWithGithubRoute);
 
 app.setErrorHandler(errorHandler);
 
-const PORT = 3000;
-app.listen({ port: PORT }).then(() => {
-  console.log(`App is running on port ${PORT}`);
+app.listen({ port: env.PORT }).then(() => {
+  console.log(`App is running on port ${env.PORT}`);
 });

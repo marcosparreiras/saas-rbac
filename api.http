@@ -57,5 +57,5 @@ POST http://localhost:3000/sessions/github
 Content-Type: application/json
 
 {
-  "code": "b9c2d5ade64c82c026a6"
+  "code": "50893c073aac51a88a73"
 }
