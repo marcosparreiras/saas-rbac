@@ -15,6 +15,7 @@ import { getProfileRoute } from "./routes/auth/get-profile";
 import { errorHandler } from "./error-handler";
 import { requestPsswordRecoverRoute } from "./routes/auth/request-password-recover";
 import { resetPasswordRoute } from "./routes/auth/reset-password";
+import { authenticateWithGithubRoute } from "./routes/auth/authenticate-with-github";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -46,6 +47,7 @@ app.register(authenticateWithPasswordRoute);
 app.register(getProfileRoute);
 app.register(requestPsswordRecoverRoute);
 app.register(resetPasswordRoute);
+app.register(authenticateWithGithubRoute);
 
 app.setErrorHandler(errorHandler);
 

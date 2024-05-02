@@ -47,3 +47,15 @@ Content-Type: application/json
   "code": "6f88274f-ce9d-4186-8171-2864ebe699b2",
   "newPassword": "123456"
 }
+
+###
+# Authenticate with Github (Simulate front-ent processes)
+#GET https://github.com/login/oauth/authorize?client_id=Ov23liFUEDNZIF1m1nwL&redirect_uri=http://localhost:3000/api/auth/callback&scope=user:email
+
+# Authenticate with Github
+POST http://localhost:3000/sessions/github
+Content-Type: application/json
+
+{
+  "code": "b9c2d5ade64c82c026a6"
+}

@@ -1,4 +1,4 @@
-import { primsa } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
@@ -27,7 +27,7 @@ export async function resetPasswordRoute(app: FastifyInstance) {
     async (request, reply) => {
       const { newPassword, code } = request.body;
 
-      const tokenFromCode = await primsa.token.findUnique({
+      const tokenFromCode = await prisma.token.findUnique({
         where: { id: code },
         select: { userId: true },
       });
@@ -36,7 +36,7 @@ export async function resetPasswordRoute(app: FastifyInstance) {
       }
 
       const newPasswordHash = await hash(newPassword, 6);
-      await primsa.user.update({
+      await prisma.user.update({
         where: { id: tokenFromCode.userId },
         data: { passwordHash: newPasswordHash },
       });

@@ -1,4 +1,4 @@
-import { primsa } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
@@ -33,7 +33,7 @@ export async function getProfileRoute(app: FastifyInstance) {
       async (request, reply) => {
         const userId = await request.getCurrentUserId();
 
-        const user = await primsa.user.findUnique({
+        const user = await prisma.user.findUnique({
           where: { id: userId },
           select: {
             id: true,

@@ -1,4 +1,4 @@
-import { primsa } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { compare } from "bcryptjs";
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
@@ -29,7 +29,7 @@ export async function authenticateWithPasswordRoute(app: FastifyInstance) {
     async (request, reply) => {
       const { email, password } = request.body;
 
-      const user = await primsa.user.findUnique({ where: { email } });
+      const user = await prisma.user.findUnique({ where: { email } });
       if (!user) {
         throw new BadRequestError("Invalid credentials");
       }

@@ -2,7 +2,7 @@ import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { hash } from "bcryptjs";
-import { primsa } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { BadRequestError } from "../_erros/bad_request_error";
 
 export async function createAccountRoute(app: FastifyInstance) {
@@ -29,7 +29,7 @@ export async function createAccountRoute(app: FastifyInstance) {
     },
     async (request, reply) => {
       const { name, email, password } = request.body;
-      const userWithSameEmail = await primsa.user.findUnique({
+      const userWithSameEmail = await prisma.user.findUnique({
         where: { email },
       });
       if (userWithSameEmail) {
@@ -37,7 +37,7 @@ export async function createAccountRoute(app: FastifyInstance) {
       }
 
       const [, domain] = email.split("@");
-      const autoJoinOrganization = await primsa.organization.findFirst({
+      const autoJoinOrganization = await prisma.organization.findFirst({
         where: {
           domain,
           shouldAttachUsersByDomain: true,
@@ -45,7 +45,7 @@ export async function createAccountRoute(app: FastifyInstance) {
       });
 
       const passwordHash = await hash(password, 6);
-      const { id: userId } = await primsa.user.create({
+      const { id: userId } = await prisma.user.create({
         data: {
           email,
           name,
