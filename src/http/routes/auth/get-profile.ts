@@ -2,6 +2,7 @@ import { primsa } from "@/lib/prisma";
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
+import { BadRequestError } from "../_erros/bad_request_error";
 
 export async function getProfileRoute(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
@@ -19,7 +20,7 @@ export async function getProfileRoute(app: FastifyInstance) {
               avatarUrl: z.string().nullable(),
             }),
           }),
-          404: z.object({
+          400: z.object({
             message: z.string(),
           }),
         },
@@ -38,9 +39,7 @@ export async function getProfileRoute(app: FastifyInstance) {
         },
       });
       if (!user) {
-        return reply.status(404).send({
-          message: "User not found",
-        });
+        throw new BadRequestError("User not found");
       }
 
       return reply.status(200).send({ user });

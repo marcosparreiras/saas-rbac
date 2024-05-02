@@ -12,6 +12,7 @@ import {
 import { createAccountRoute } from "./routes/auth/create-account";
 import { authenticateWithPasswordRoute } from "./routes/auth/authenticate-with-password";
 import { getProfileRoute } from "./routes/auth/get-profile";
+import { errorHandler } from "./error-handler";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -41,6 +42,8 @@ app.register(fastifySwaggerUI, {
 app.register(createAccountRoute);
 app.register(authenticateWithPasswordRoute);
 app.register(getProfileRoute);
+
+app.setErrorHandler(errorHandler);
 
 const PORT = 3000;
 app.listen({ port: PORT }).then(() => {

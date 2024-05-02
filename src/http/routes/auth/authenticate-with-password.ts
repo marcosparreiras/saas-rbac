@@ -3,6 +3,7 @@ import { compare } from "bcryptjs";
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
+import { BadRequestError } from "../_erros/bad_request_error";
 
 export async function authenticateWithPasswordRoute(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -30,17 +31,17 @@ export async function authenticateWithPasswordRoute(app: FastifyInstance) {
 
       const user = await primsa.user.findUnique({ where: { email } });
       if (!user) {
-        return reply.status(400).send({ message: "Invalid credentials" });
+        throw new BadRequestError("Invalid credentials");
       }
       if (!user.passwordHash) {
-        return reply
-          .status(400)
-          .send({ message: "User does not has a password, use social login." });
+        throw new BadRequestError(
+          "User does not has a password, use social login"
+        );
       }
 
       const isPasswordValid = await compare(password, user.passwordHash);
       if (!isPasswordValid) {
-        return reply.status(400).send({ message: "Invalid credentials" });
+        throw new BadRequestError("Invalid credentials");
       }
 
       const token = await reply.jwtSign(
