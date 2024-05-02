@@ -14,6 +14,7 @@ import { authenticateWithPasswordRoute } from "./routes/auth/authenticate-with-p
 import { getProfileRoute } from "./routes/auth/get-profile";
 import { errorHandler } from "./error-handler";
 import { requestPsswordRecoverRoute } from "./routes/auth/request-password-recover";
+import { resetPasswordRoute } from "./routes/auth/reset-password";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -44,6 +45,7 @@ app.register(createAccountRoute);
 app.register(authenticateWithPasswordRoute);
 app.register(getProfileRoute);
 app.register(requestPsswordRecoverRoute);
+app.register(resetPasswordRoute);
 
 app.setErrorHandler(errorHandler);
 

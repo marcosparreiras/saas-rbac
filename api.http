@@ -36,3 +36,14 @@ Content-Type: application/json
 {
   "email": "johndoe@example.com"
 }
+
+###
+
+# Reset password
+POST http://localhost:3000/password/reset
+Content-Type: application/json
+
+{
+  "code": "6f88274f-ce9d-4186-8171-2864ebe699b2",
+  "newPassword": "123456"
+}
