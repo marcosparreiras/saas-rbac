@@ -13,6 +13,7 @@ import { createAccountRoute } from "./routes/auth/create-account";
 import { authenticateWithPasswordRoute } from "./routes/auth/authenticate-with-password";
 import { getProfileRoute } from "./routes/auth/get-profile";
 import { errorHandler } from "./error-handler";
+import { requestPsswordRecoverRoute } from "./routes/auth/request-password-recover";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -42,6 +43,7 @@ app.register(fastifySwaggerUI, {
 app.register(createAccountRoute);
 app.register(authenticateWithPasswordRoute);
 app.register(getProfileRoute);
+app.register(requestPsswordRecoverRoute);
 
 app.setErrorHandler(errorHandler);
 

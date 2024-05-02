@@ -25,3 +25,14 @@ Content-Type: application/json
 # Get authenticated user profile
 GET http://localhost:3000/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWNmMWQzZS1mMjMwLTQxODgtODQzNC1kMDQxOGE4NDdhODkiLCJpYXQiOjE3MTQ2NTg5MzgsImV4cCI6MTcxNTI2MzczOH0.h1vFvTNjzMEn56Qks83LYk7hYpIcbYtUGOjAt2jEzRQ
+
+
+###
+
+# Request password recover
+POST http://localhost:3000/password/recover
+Content-Type: application/json
+
+{
+  "email": "johndoe@example.com"
+}
