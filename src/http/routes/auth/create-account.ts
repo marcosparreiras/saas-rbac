@@ -9,6 +9,8 @@ export async function createAccountRoute(app: FastifyInstance) {
     "/account",
     {
       schema: {
+        tags: ["auth"],
+        summary: "Create a new account",
         body: z.object({
           name: z.string(),
           email: z.string().email(),
@@ -26,12 +28,28 @@ export async function createAccountRoute(app: FastifyInstance) {
           .status(400)
           .send({ message: `User with email ${email} already exists` });
       }
+
+      const [, domain] = email.split("@");
+      const autoJoinOrganization = await primsa.organization.findFirst({
+        where: {
+          domain,
+          shouldAttachUsersByDomain: true,
+        },
+      });
+
       const passwordHash = await hash(password, 6);
       const { id: userId } = await primsa.user.create({
         data: {
           email,
           name,
           passwordHash,
+          member_on: autoJoinOrganization
+            ? {
+                create: {
+                  organizationId: autoJoinOrganization.id,
+                },
+              }
+            : undefined,
         },
         select: {
           id: true,

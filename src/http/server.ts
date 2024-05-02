@@ -1,5 +1,6 @@
 import { fastify } from "fastify";
 import fastifyCors from "@fastify/cors";
+import fastifyJwt from "@fastify/jwt";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUI from "@fastify/swagger-ui";
 import {
@@ -9,11 +10,15 @@ import {
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { createAccountRoute } from "./routes/auth/create-account";
+import { authenticateWithPassword } from "./routes/auth/authenticate-with-password";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 app.register(fastifyCors);
+app.register(fastifyJwt, {
+  secret: "default",
+});
 
 app.register(fastifySwagger, {
   openapi: {
@@ -33,6 +38,7 @@ app.register(fastifySwaggerUI, {
 });
 
 app.register(createAccountRoute);
+app.register(authenticateWithPassword);
 
 const PORT = 3000;
 app.listen({ port: PORT }).then(() => {
