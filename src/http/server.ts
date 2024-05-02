@@ -10,7 +10,8 @@ import {
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { createAccountRoute } from "./routes/auth/create-account";
-import { authenticateWithPassword } from "./routes/auth/authenticate-with-password";
+import { authenticateWithPasswordRoute } from "./routes/auth/authenticate-with-password";
+import { getProfileRoute } from "./routes/auth/get-profile";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -38,7 +39,8 @@ app.register(fastifySwaggerUI, {
 });
 
 app.register(createAccountRoute);
-app.register(authenticateWithPassword);
+app.register(authenticateWithPasswordRoute);
+app.register(getProfileRoute);
 
 const PORT = 3000;
 app.listen({ port: PORT }).then(() => {

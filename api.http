@@ -1,5 +1,5 @@
 
-# Create account
+# Create a new account
 POST http://localhost:3000/account
 Content-Type: application/json
 
@@ -8,3 +8,20 @@ Content-Type: application/json
   "email": "johndoe@example.com",
   "password": "123456"
 }
+
+###
+
+# Authenticate with email password
+POST http://localhost:3000/sessions/password
+Content-Type: application/json
+
+{
+  "email": "johndoe@example.com",
+  "password": "123456"
+}
+
+###
+
+# Get authenticated user profile
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWNmMWQzZS1mMjMwLTQxODgtODQzNC1kMDQxOGE4NDdhODkiLCJpYXQiOjE3MTQ2NTg5MzgsImV4cCI6MTcxNTI2MzczOH0.h1vFvTNjzMEn56Qks83LYk7hYpIcbYtUGOjAt2jEzRQ
