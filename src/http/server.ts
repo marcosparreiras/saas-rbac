@@ -19,6 +19,7 @@ import { authenticateWithGithubRoute } from "./routes/auth/authenticate-with-git
 import { env } from "@/env";
 import { createOrganizationRoute } from "./routes/orgs/create-organization";
 import { getMembershipRoute } from "./routes/orgs/get-membership";
+import { getOrganizationsRoute } from "./routes/orgs/get-organizations";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -62,6 +63,7 @@ app.register(resetPasswordRoute);
 app.register(authenticateWithGithubRoute);
 app.register(createOrganizationRoute);
 app.register(getMembershipRoute);
+app.register(getOrganizationsRoute);
 
 app.setErrorHandler(errorHandler);
 

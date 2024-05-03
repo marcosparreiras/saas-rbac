@@ -78,3 +78,9 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmY
 # Get user membership on given organization
 GET http://localhost:3000/organizations/my-org2/membership
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDg5MzksImV4cCI6MTcxNTM1MzczOX0.xhMgClXtPi8DEUegI1zO21wSxabRAFym0xXtVEIaEhM
+
+
+###
+
+# List organizations
+GET http://localhost:3000/organizations
