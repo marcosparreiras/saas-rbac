@@ -111,3 +111,14 @@ Content-Type: application/json
 # Delete an organization
 DELETE http://localhost:3000/organizations/my-org2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
+
+###
+
+# Transfer organization ownership
+PATCH http://localhost:3000/organizations/my-org2/owner
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
+Content-Type: application/json
+
+{
+  "tranferToUserId": ""
+}
