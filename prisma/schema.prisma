@@ -99,7 +99,7 @@ model Organization {
   domain                    String?  @unique
   ownerId                   String   @map("owner_id")
   shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
-  avatar_url                String?  @map("avatar_url")
+  avatarUrl                 String?  @map("avatar_url")
   createtAt                 DateTime @default(now()) @map("created_at")
   updatedAt                 DateTime @updatedAt @map("updated_at")
 
@@ -117,7 +117,7 @@ model Project {
   name           String
   slug           String   @unique
   description    String
-  avatar_url     String?  @map("avatar_url")
+  avatarUrl      String?  @map("avatar_url")
   createtAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
   ownerId        String   @map("owner_id")

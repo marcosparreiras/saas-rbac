@@ -59,3 +59,16 @@ Content-Type: application/json
 {
   "code": "50893c073aac51a88a73"
 }
+
+###
+
+# Create a new organization
+POST http://localhost:3000/organizations
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
+
+{
+   "name": "my org",
+   "domain": "my-org",
+   "avatarUrl": "https://avatars.githubusercontent.com/u/56413810"
+}

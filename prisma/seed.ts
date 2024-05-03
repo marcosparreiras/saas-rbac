@@ -42,7 +42,7 @@ async function seed(): Promise<void> {
       name: "My Organization (Admin)",
       domain: "my-organization.com",
       slug: "my-organization-admin",
-      avatar_url: faker.image.avatarGitHub(),
+      avatarUrl: faker.image.avatarGitHub(),
       shouldAttachUsersByDomain: true,
       ownerId: user.id,
       projects: {
@@ -57,7 +57,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -68,7 +68,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -79,7 +79,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
           ],
         },
@@ -109,7 +109,7 @@ async function seed(): Promise<void> {
     data: {
       name: "My Organization (Member)",
       slug: "my-organization-member",
-      avatar_url: faker.image.avatarGitHub(),
+      avatarUrl: faker.image.avatarGitHub(),
       ownerId: user.id,
       projects: {
         createMany: {
@@ -123,7 +123,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -134,7 +134,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -145,7 +145,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
           ],
         },
@@ -175,7 +175,7 @@ async function seed(): Promise<void> {
     data: {
       name: "My Organization (Billing)",
       slug: "my-organization-billing",
-      avatar_url: faker.image.avatarGitHub(),
+      avatarUrl: faker.image.avatarGitHub(),
       ownerId: user.id,
       projects: {
         createMany: {
@@ -189,7 +189,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -200,7 +200,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
             {
               ownerId: faker.helpers.arrayElement([
@@ -211,7 +211,7 @@ async function seed(): Promise<void> {
               name: faker.lorem.words(5),
               description: faker.lorem.paragraph(),
               slug: faker.lorem.slug(5),
-              avatar_url: faker.image.avatarGitHub(),
+              avatarUrl: faker.image.avatarGitHub(),
             },
           ],
         },

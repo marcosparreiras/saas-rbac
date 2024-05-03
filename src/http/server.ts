@@ -17,6 +17,7 @@ import { requestPsswordRecoverRoute } from "./routes/auth/request-password-recov
 import { resetPasswordRoute } from "./routes/auth/reset-password";
 import { authenticateWithGithubRoute } from "./routes/auth/authenticate-with-github";
 import { env } from "@/env";
+import { createOrganizationRoute } from "./routes/orgs/create-organization";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -34,6 +35,15 @@ app.register(fastifySwagger, {
         "A multi-tenant SaaS including authentication and RBAC authorization.",
       version: "1.0.0",
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "jwt",
+        },
+      },
+    },
     servers: [],
   },
   transform: jsonSchemaTransform,
@@ -49,6 +59,7 @@ app.register(getProfileRoute);
 app.register(requestPsswordRecoverRoute);
 app.register(resetPasswordRoute);
 app.register(authenticateWithGithubRoute);
+app.register(createOrganizationRoute);
 
 app.setErrorHandler(errorHandler);
 
