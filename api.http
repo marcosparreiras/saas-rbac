@@ -91,3 +91,17 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmY
 # Get organization of an authenticated user by slug
 GET http://localhost:3000/organizations/my-org2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
+
+###
+
+# Get organization of an authenticated user by slug
+PUT http://localhost:3000/organizations/my-org2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
+Content-Type: application/json
+
+{
+    "name": "org-2",
+    "avatarUrl": "",
+    "domain": "",
+    "shouldAttachUsersByDomain": false
+}
