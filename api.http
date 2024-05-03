@@ -82,10 +82,12 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmY
 
 ###
 
-# List organizations
+# List authenticated user organizations
 GET http://localhost:3000/organizations
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
 
 ###
 
-# Get organization by a given id
-GET http://localhost:3000/organizations/684c106d-cb25-4121-8576-12c4c565dabd
+# Get organization of an authenticated user by slug
+GET http://localhost:3000/organizations/my-org2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA

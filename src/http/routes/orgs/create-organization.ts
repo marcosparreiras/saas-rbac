@@ -16,6 +16,7 @@ export async function createOrganizationRoute(app: FastifyInstance) {
         schema: {
           tags: ["orgs"],
           summary: "Create a new organization",
+          security: [{ bearerAuth: [] }],
           body: z.object({
             name: z.string(),
             avatarUrl: z.string().nullish(),
