@@ -24,7 +24,7 @@ Content-Type: application/json
 
 # Get authenticated user profile
 GET http://localhost:3000/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWNmMWQzZS1mMjMwLTQxODgtODQzNC1kMDQxOGE4NDdhODkiLCJpYXQiOjE3MTQ2NTg5MzgsImV4cCI6MTcxNTI2MzczOH0.h1vFvTNjzMEn56Qks83LYk7hYpIcbYtUGOjAt2jEzRQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDg5MzksImV4cCI6MTcxNTM1MzczOX0.xhMgClXtPi8DEUegI1zO21wSxabRAFym0xXtVEIaEhM
 
 
 ###
@@ -68,7 +68,13 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDU0OTIsImV4cCI6MTcxNTM1MDI5Mn0.qJNOOSc_DjsyIiAlu-FjR2E1ddp6ZUNbYVrLwBDcvcA
 
 {
-   "name": "my org",
-   "domain": "my-org",
+   "name": "my org2",
+   "domain": "my-org2",
    "avatarUrl": "https://avatars.githubusercontent.com/u/56413810"
 }
+
+###
+
+# Get user membership on given organization
+GET http://localhost:3000/organizations/my-org2/membership
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmRjZWVmYS05MDg3LTQwNGEtOGQ2YS00ZjljOTkxYjg1MTYiLCJpYXQiOjE3MTQ3NDg5MzksImV4cCI6MTcxNTM1MzczOX0.xhMgClXtPi8DEUegI1zO21wSxabRAFym0xXtVEIaEhM

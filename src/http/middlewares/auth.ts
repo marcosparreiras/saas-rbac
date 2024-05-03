@@ -35,6 +35,9 @@ export async function authMiddleware(request: FastifyRequest) {
       const { organization, ...membership } = member;
       return { organization, membership };
     } catch (error: unknown) {
+      if (error instanceof UnauthorizedError) {
+        throw error;
+      }
       throw new UnauthorizedError("Invalid auth token");
     }
   };
