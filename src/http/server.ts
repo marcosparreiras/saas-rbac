@@ -28,6 +28,7 @@ import { createProjectRoute } from "./routes/projects/create-projects";
 import { deleteProjectRoute } from "./routes/projects/delete-projects";
 import { getProjectRoute } from "./routes/projects/get-project";
 import { getProjectsRoute } from "./routes/projects/get-projects";
+import { updateProjectRoute } from "./routes/projects/update-project";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -80,6 +81,7 @@ app.register(createProjectRoute);
 app.register(deleteProjectRoute);
 app.register(getProjectRoute);
 app.register(getProjectsRoute);
+app.register(updateProjectRoute);
 
 app.setErrorHandler(errorHandler);
 

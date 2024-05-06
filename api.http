@@ -154,3 +154,15 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlM
 GET http://localhost:3000/organizations/my-organization-admin/projects
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8
 
+###
+
+# Update projects
+PUT http://localhost:3000/organizations/my-organization-admin/projects/my-first-project
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8
+Content-Type: application/json
+
+
+{
+  "name": "my first project - updated",
+  "description": "some fake description for my project - updated"
+}
