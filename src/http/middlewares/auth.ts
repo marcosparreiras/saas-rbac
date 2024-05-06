@@ -1,7 +1,6 @@
 import type { FastifyRequest } from "fastify";
 import { UnauthorizedError } from "../routes/_erros/unauthorized_error";
 import { prisma } from "@/lib/prisma";
-import { BadRequestError } from "../routes/_erros/bad_request_error";
 
 export async function authMiddleware(request: FastifyRequest) {
   request.getCurrentUserId = async () => {

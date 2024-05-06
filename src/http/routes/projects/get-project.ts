@@ -9,23 +9,39 @@ import { UnauthorizedError } from "../_erros/unauthorized_error";
 import { BadRequestError } from "../_erros/bad_request_error";
 import { projectSchema } from "@/auth/models/project";
 
-export async function deleteProjectRoute(app: FastifyInstance) {
+export async function getProjectRoute(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .addHook("preHandler", authMiddleware)
-    .delete(
+    .get(
       "/organizations/:orgSlug/projects/:projectSlug",
       {
         schema: {
           tags: ["projects"],
-          summary: "Delete a project",
+          summary: "Get project details",
           security: [{ bearerAuth: [] }],
           params: z.object({
             orgSlug: z.string(),
             projectSlug: z.string(),
           }),
           response: {
-            204: z.null(),
+            200: z.object({
+              project: z.object({
+                id: z.string(),
+                name: z.string(),
+                slug: z.string(),
+                description: z.string(),
+                avatarUrl: z.string().nullable(),
+                createtAt: z.date(),
+                updatedAt: z.date(),
+                organizationId: z.string(),
+                owner: z.object({
+                  id: z.string(),
+                  name: z.string().nullable(),
+                  avatarUrl: z.string().nullable(),
+                }),
+              }),
+            }),
             400: z.object({ message: z.string() }),
           },
         },
@@ -35,7 +51,28 @@ export async function deleteProjectRoute(app: FastifyInstance) {
         const { membership } = await request.getUserMembership(orgSlug);
 
         const project = await prisma.project.findUnique({
-          where: { slug: projectSlug },
+          where: {
+            slug: projectSlug,
+            organizationId: membership.organizationId,
+          },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            description: true,
+            avatarUrl: true,
+            createtAt: true,
+            updatedAt: true,
+            organizationId: true,
+            ownerId: true,
+            owner: {
+              select: {
+                id: true,
+                name: true,
+                avatarUrl: true,
+              },
+            },
+          },
         });
         if (!project) {
           throw new BadRequestError("Project not found");
@@ -45,20 +82,16 @@ export async function deleteProjectRoute(app: FastifyInstance) {
           userSchema.parse({ id: membership.userId, role: membership.role })
         );
         const isAbleToDeleteProject = ability.can(
-          "delete",
+          "get",
           projectSchema.parse(project)
         );
         if (!isAbleToDeleteProject) {
           throw new UnauthorizedError(
-            "You have no authorization delete this project"
+            "You have no authorization to get this project details"
           );
         }
 
-        await prisma.project.delete({
-          where: { id: project.id, organizationId: membership.organizationId },
-        });
-
-        return reply.status(204).send();
+        return reply.status(200).send({ project });
       }
     );
 }
