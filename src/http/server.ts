@@ -25,6 +25,7 @@ import { updateOrganizationRoute } from "./routes/orgs/update-organization";
 import { shutdownOrganizationRoute } from "./routes/orgs/shutdown-oganization";
 import { transferOrganizationRoute } from "./routes/orgs/transfer-organization";
 import { createProjectRoute } from "./routes/projects/create-projects";
+import { deleteProjectRoute } from "./routes/projects/delete-projects";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -74,6 +75,7 @@ app.register(updateOrganizationRoute);
 app.register(shutdownOrganizationRoute);
 app.register(transferOrganizationRoute);
 app.register(createProjectRoute);
+app.register(deleteProjectRoute);
 
 app.setErrorHandler(errorHandler);
 
