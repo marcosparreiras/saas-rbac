@@ -16,7 +16,7 @@ export async function getOrganizationMembersRoute(app: FastifyInstance) {
       "/organizations/:slug/members",
       {
         schema: {
-          tags: ["members", "orgs"],
+          tags: ["members"],
           summary: "Get organization members",
           security: [{ bearerAuth: [] }],
           params: z.object({ slug: z.string() }),
@@ -26,6 +26,7 @@ export async function getOrganizationMembersRoute(app: FastifyInstance) {
                 z.object({
                   role: rolesSchema,
                   id: z.string(),
+                  userId: z.string(),
                   name: z.string().nullable(),
                   email: z.string(),
                   avatarUrl: z.string().nullable(),
@@ -54,6 +55,7 @@ export async function getOrganizationMembersRoute(app: FastifyInstance) {
           where: { organizationId: membership.organizationId },
           orderBy: { role: "asc" },
           select: {
+            id: true,
             role: true,
             user: {
               select: {
@@ -67,10 +69,13 @@ export async function getOrganizationMembersRoute(app: FastifyInstance) {
         });
 
         return reply.status(200).send({
-          members: members.map((member) => ({
-            role: member.role,
-            ...member.user,
-          })),
+          members: members.map(
+            ({ user: { id: userId, ...user }, ...member }) => ({
+              userId,
+              ...member,
+              ...user,
+            })
+          ),
         });
       }
     );
