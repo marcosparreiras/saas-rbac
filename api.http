@@ -183,3 +183,21 @@ Content-Type: application/json
 {
   "role": "BILLING"
 }
+
+###
+
+# Remove member
+DELETE http://localhost:3000/organizations/my-organization-admin/members/753c5ac9-0deb-410e-a0b5-584fdee59571
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8
+
+###
+
+# Invite a member to join an organization
+POST http://localhost:3000/organizations/my-organization-admin/invites
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "role": "MEMBER"
+}
