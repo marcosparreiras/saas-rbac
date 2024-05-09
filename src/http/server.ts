@@ -33,6 +33,7 @@ import { getOrganizationMembersRoute } from "./routes/members/get-organization-m
 import { updateMemberRoute } from "./routes/members/update-member";
 import { removeMemberRoute } from "./routes/members/remove-member";
 import { createInviteRoute } from "./routes/invites/create-invite";
+import { getInviteRoute } from "./routes/invites/get-invite";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -90,6 +91,7 @@ app.register(getOrganizationMembersRoute);
 app.register(updateMemberRoute);
 app.register(removeMemberRoute);
 app.register(createInviteRoute);
+app.register(getInviteRoute);
 
 app.setErrorHandler(errorHandler);
 

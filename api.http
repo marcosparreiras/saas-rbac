@@ -201,3 +201,9 @@ Content-Type: application/json
   "email": "john@example.com",
   "role": "MEMBER"
 }
+
+
+###
+
+# Get invite
+GET http://localhost:3000/invites/:id
