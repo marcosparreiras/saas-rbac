@@ -211,6 +211,14 @@ GET http://localhost:3000/invites/:id
 
 ###
 
-# Get invite
+# Get organization invites
 GET http://localhost:3000/organizations/:slug/invites
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8
+
+
+
+###
+
+# Accept invite
+POST http://localhost:3000/invites/:id/accept
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYzBjZDBlMC1lMzRmLTRlNDAtYTA3OS03OWNkZTM2OTQ1ZGMiLCJpYXQiOjE3MTUwMDYzOTksImV4cCI6MTcxNTYxMTE5OX0.lGRXh8staVwA_zfO7fSorB_qZIjc5ZnjwiELxa3_MW8

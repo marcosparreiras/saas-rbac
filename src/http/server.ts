@@ -35,6 +35,7 @@ import { removeMemberRoute } from "./routes/members/remove-member";
 import { createInviteRoute } from "./routes/invites/create-invite";
 import { getInviteRoute } from "./routes/invites/get-invite";
 import { getOrganizationInvitesRoute } from "./routes/invites/get-organization-invites";
+import { acceptInviteRoute } from "./routes/invites/accept-invite";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setSerializerCompiler(serializerCompiler);
@@ -94,6 +95,7 @@ app.register(removeMemberRoute);
 app.register(createInviteRoute);
 app.register(getInviteRoute);
 app.register(getOrganizationInvitesRoute);
+app.register(acceptInviteRoute);
 
 app.setErrorHandler(errorHandler);
 
