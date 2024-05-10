@@ -36,7 +36,7 @@ model Token {
   createtAt DateTime  @default(now()) @map("created_at")
   userId    String    @map("user_id")
 
-  user User @relation(references: [id], fields: [userId])
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 
   @@map("tokens")
 }
@@ -51,7 +51,7 @@ model Account {
   providerAccountId String          @unique @map("provider_account_id")
   userId            String          @map("user_id")
 
-  user User @relation(references: [id], fields: [userId])
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 
   @@unique([provider, userId])
   @@map("account")
@@ -71,8 +71,8 @@ model Invite {
   authorId       String?  @map("author_id")
   organizationId String   @map("organization_id")
 
-  author       User?        @relation(references: [id], fields: [authorId])
-  organization Organization @relation(references: [id], fields: [organizationId])
+  author       User?        @relation(references: [id], fields: [authorId], onDelete: SetNull)
+  organization Organization @relation(references: [id], fields: [organizationId], onDelete: Cascade)
 
   @@unique([email, organizationId])
   @@index([email])
@@ -85,8 +85,8 @@ model Member {
   organizationId String @map("organization_id")
   userId         String @map("user_id")
 
-  organization Organization @relation(references: [id], fields: [organizationId])
-  user         User         @relation(references: [id], fields: [userId])
+  organization Organization @relation(references: [id], fields: [organizationId], onDelete: Cascade)
+  user         User         @relation(references: [id], fields: [userId], onDelete: Cascade)
 
   @@unique([organizationId, userId])
   @@map("members")
@@ -124,7 +124,7 @@ model Project {
   organizationId String   @map("organization_id")
 
   owner        User         @relation(fields: [ownerId], references: [id])
-  organization Organization @relation(fields: [organizationId], references: [id])
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@map("projects")
 }
